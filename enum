@@ -1,0 +1,11 @@
+# Subfinder + Assetfinder subdomain enumeration
+cat $1 | subfinder -o $1_subfinder.txt
+cat $1 | assetfinder --subs-only > $1_assetfinder.txt
+cat $1_subfinder.txt $1_assetfinder.txt | sort | uniq | tee $1_subdomains.txt
+rm $1_subfinder.txt $1_assetfinder.txt
+
+# Httpx host enumeration
+httpx -l $1_subdomains.txt -o $1_hosts.txt
+
+# Naabu port scanning
+sudo naabu -l $1_subdomains.txt -o $1_portScan.txt
