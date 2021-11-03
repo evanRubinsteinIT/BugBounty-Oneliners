@@ -1,6 +1,0 @@
-# Display user choices 
-echo "List of URLS: $1"
-echo "Wordlist: $2"
-
-# For loop to fuzz urls in a list
-for URL in $1; do (ffuf -u "${URL}/FUZZ" -w $2 | tee ${URL}_fuzz.txt); done
