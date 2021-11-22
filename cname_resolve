@@ -1,13 +1,13 @@
 #!/bin/bash
 
 while IFS= read -r line; do
-    CNAME=$(host -t cname "$line.$1" | awk '{print $NF}')
+    CNAME=$(host -t cname "$line" | awk '{print $NF}')
     # Checks CNAME variable for a null value
     if [ -z "$CNAME" ];
     then continue;
     fi
     # If the CNAME doesn't resolve, it outputs the CNAME and subdomain it came from
     if ! host "$CNAME" > /dev/null;
-    then echo "$CNAME ("$line.$1") did not resolve... could be vulnerable for a takeover"
+    then echo "$CNAME ("$line") did not resolve... could be vulnerable for a takeover"
     fi
-done < "$2"
+done < "$1"
