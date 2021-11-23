@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while IFS= read -r line; do
+    if host "$line.$1" > /dev/null 
+    then
+        echo "$line.$1"
+    fi
+done < $2
