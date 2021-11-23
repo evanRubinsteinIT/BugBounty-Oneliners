@@ -15,3 +15,6 @@ Grabs the http/https headers from a list of URLs. It is used by running the scri
 
 ## Cname_Resolve
 Takes a list of subdomains as inputs, and checks to see if the CNAMES resolve. This can either be used for general recon, or to look for potential subdomain takeovers. Inspired by TomNomNom
+
+## Subrute
+Takes a root domain as the first argument, and a subdomain word list as the second. It outputs all of the subdomains that resolve
